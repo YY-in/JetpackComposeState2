@@ -22,12 +22,16 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     private fun TodoActivityScreen(){
-        val items: List<TodoItem> by todoViewModel.todoItems.observeAsState(listOf())
+//        val items: List<TodoItem> by todoViewModel.todoItems.observeAsState(listOf())
 
         TodoScreen(
-            items = items,                                   //状态向下流动
+            items = todoViewModel.todoItems,                                   //状态向下流动
             onAddItem = { todoViewModel.addItem(it) },       //事件向上流动
-            onRemoveItem = {todoViewModel.removeItem(it)}
+            onRemoveItem = {todoViewModel.removeItem(it)},
+            onStartEdit = todoViewModel::onEditItemSelected,   //直接传递函数的引用
+            ondEditItemChange = todoViewModel::onEditItemChange,
+            onEditDone = todoViewModel::onEditDone,
+            currentlyEditing = todoViewModel.currentEditItem
         )
     }
 }
