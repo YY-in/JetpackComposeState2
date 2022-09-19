@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.tooling.preview.Preview
+import com.yyin.jetpackcomposestate2.example.MyCardPreview
 
 class MainActivity : ComponentActivity() {
     //将属性的get、set操作交给另一个对象生成
@@ -15,8 +16,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TodoActivityScreen()
+            MyCardPreview()
         }
+
 
     }
 
